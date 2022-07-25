@@ -5,6 +5,7 @@ import Banner from '../components/Banner/Banner';
 import Header from '../components/Header/Header';
 import requests from '../utils/requests';
 import { Movie } from '../typings';
+import MoviesRow from '../components/MoviesRow/MoviesRow';
 
 export const getServerSideProps = async () => {
   const [
@@ -72,12 +73,15 @@ const Home = ({
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
-        <section>
-          {/* Row films */}
-          {/* Row films */}
-          {/* Row films */}
-          {/* Row films */}
-          {/* Row films */}
+        <section className="md: space-y-24">
+          <MoviesRow title="Trending Now" movies={trendingNow} />
+          <MoviesRow title="Top Rated" movies={topRated} />
+          <MoviesRow title="Action Thrillers" movies={actionMovies} />
+          <MoviesRow title="Comedies" movies={comedyMovies} />
+          {/* my list */}
+          <MoviesRow title="Scary Movies" movies={horrorMovies} />
+          <MoviesRow title="Romance Movies" movies={romanceMovies} />
+          <MoviesRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
       {/* Modal */}

@@ -9,7 +9,10 @@ import { useDispatch } from 'react-redux';
 import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { useEffect } from 'react';
 import { auth } from '../firebase';
-import { isLoadingSelector, showModalSelector } from '../redux/selectors';
+import {
+  // isLoadingSelector,
+  showModalSelector,
+} from '../redux/selectors';
 import { useSelector } from 'react-redux';
 import Modal from '../components/Modal/Modal';
 
@@ -71,14 +74,14 @@ const Home = ({
   trendingNow,
 }: MoviesProps) => {
   const dispatch = useDispatch<any>();
-  const isLoading = useSelector(isLoadingSelector);
+  // const isLoading = useSelector(isLoadingSelector);
   const isModalShown = useSelector(showModalSelector);
-
-  if (isLoading) return null;
 
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);
+
+  // if (isLoading) return null;
 
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">

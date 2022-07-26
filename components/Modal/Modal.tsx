@@ -36,16 +36,16 @@ const Modal = () => {
     fetchMovie();
   }, [currentMovie]);
 
-  useEffect(() => {
-    if (!isModalShown) return;
-    function closeByEscape(event: any) {
-      if (event.key === 'Escape') {
-        dispatch(showModal(false));
-      }
-    }
-    document.addEventListener('keydown', closeByEscape);
-    return () => document.removeEventListener('keydown', closeByEscape);
-  }, [isModalShown]);
+  // useEffect(() => {
+  //   if (!isModalShown) return;
+  //   function closeByEscape(event: any) {
+  //     if (event.key === 'Escape') {
+  //       dispatch(showModal(false));
+  //     }
+  //   }
+  //   document.addEventListener('keydown', closeByEscape);
+  //   return () => document.removeEventListener('keydown', closeByEscape);
+  // }, [isModalShown]);
 
   const handleClose = () => {
     dispatch(showModal(false));

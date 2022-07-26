@@ -70,7 +70,7 @@ const Home = ({
   topRated,
   trendingNow,
 }: MoviesProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const isLoading = useSelector(isLoadingSelector);
   const isModalShown = useSelector(showModalSelector);
 

@@ -10,7 +10,7 @@ import { Element, Genre } from '../../typings';
 import { FaPlay } from 'react-icons/fa';
 
 const Modal = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const isModalShown = useSelector(showModalSelector);
   const currentMovie = useSelector(currentMovieSelector);
   const [trailer, setTrailer] = useState('');
@@ -38,7 +38,7 @@ const Modal = () => {
 
   useEffect(() => {
     if (!isModalShown) return;
-    function closeByEscape(event) {
+    function closeByEscape(event: any) {
       if (event.key === 'Escape') {
         dispatch(showModal(false));
       }

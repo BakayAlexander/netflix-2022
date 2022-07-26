@@ -7,7 +7,6 @@ import { checkIsUserLoggedIn, signIn, signUp } from '../redux/actionFunctions';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { auth } from '../firebase';
-// import useAuth from '../hooks/useAuth';
 
 type FormValues = {
   email: string;
@@ -17,9 +16,7 @@ type FormValues = {
 const login = () => {
   const initialValues: FormValues = { email: '', password: '' };
   const [loginButton, setLoginButton] = useState(false);
-
-  //!!!
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const router = useRouter();
 
   useEffect(() => {
@@ -62,11 +59,9 @@ const login = () => {
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
           if (loginButton) {
-            //!!!
             const res = dispatch(signIn(values.email, values.password));
             if (res) router.push('/');
           } else {
-            //!!!
             const res = dispatch(signUp(values.email, values.password));
             if (res) router.push('/');
           }

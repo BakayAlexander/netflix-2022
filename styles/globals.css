@@ -10,3 +10,9 @@
     @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
 }
+
+@layer components {
+  .input {
+    @apply w-full rounded bg-[#333] px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
+  }
+}

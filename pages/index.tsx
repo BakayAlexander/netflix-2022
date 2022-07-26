@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import Banner from '../components/Banner/Banner';
 import Header from '../components/Header/Header';
 import requests from '../utils/requests';
 import { Movie } from '../typings';
 import MoviesRow from '../components/MoviesRow/MoviesRow';
+import { useDispatch } from 'react-redux';
+import { checkIsUserLoggedIn } from '../redux/actionFunctions';
+import { useEffect } from 'react';
+import { auth } from '../firebase';
 
 export const getServerSideProps = async () => {
   const [
@@ -64,6 +67,11 @@ const Home = ({
   topRated,
   trendingNow,
 }: MoviesProps) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkIsUserLoggedIn());
+  }, [auth]);
+
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       <Head>

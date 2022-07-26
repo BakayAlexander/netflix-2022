@@ -1,4 +1,4 @@
-import { loadingActionCreator, loginErrorActionCreator, logoutActionCreator, loginActionCreator, registerActionCreator } from './reducer';
+import { loadingActionCreator, loginErrorActionCreator, logoutActionCreator, loginActionCreator, registerActionCreator, showModalActionCreator, currentMovieActionCreator } from './reducer';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,8 +8,7 @@ import {
 
 import { auth } from '../firebase';
 
-
-export const signUp = ( email: string, password: string)=> async (dispatch) => {
+export const signUp = ( email: string, password: string)=> async (dispatch:any) => {
 dispatch(loadingActionCreator(true))
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -25,7 +24,7 @@ dispatch(loadingActionCreator(true))
   }
 };
 
-export const signIn =  (email: string, password: string)=> async (dispatch) => {
+export const signIn =  (email: string, password: string)=> async (dispatch:any) => {
   dispatch(loadingActionCreator(true))
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -41,7 +40,7 @@ export const signIn =  (email: string, password: string)=> async (dispatch) => {
   }
 };
 
-export const logout =  () => async (dispatch) => {
+export const logout =  () => async (dispatch:any) => {
   dispatch(loadingActionCreator(true))
   try {
     await signOut(auth);
@@ -53,7 +52,7 @@ export const logout =  () => async (dispatch) => {
   }
 };
 
-export const checkIsUserLoggedIn = () => async (dispatch) =>{
+export const checkIsUserLoggedIn = () => async (dispatch:any) =>{
   dispatch(loadingActionCreator(true))
   try {
       onAuthStateChanged(auth, user => {
@@ -72,4 +71,12 @@ export const checkIsUserLoggedIn = () => async (dispatch) =>{
   }finally{
     dispatch(loadingActionCreator(false))
   }
+}
+
+export const showModal = (isShown: boolean) => (dispatch:any) => {
+  dispatch(showModalActionCreator(isShown))
+}
+
+export const selectCurrentMovie = (currentMovie: any) => (dispatch:any) => {
+  dispatch(currentMovieActionCreator(currentMovie))
 }

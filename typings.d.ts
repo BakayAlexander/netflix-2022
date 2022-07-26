@@ -31,3 +31,12 @@ export type Element = {
     | 'Trailer'
     | 'Teaser'
 }
+
+export type defaultStateTypes = {
+  isLoading: boolean
+  loginError: string
+  isLoggedIn: boolean
+  user: object | null
+  showModal: boolean
+  currentMovie: Movie | null
+}

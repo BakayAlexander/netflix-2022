@@ -5,6 +5,8 @@ import { Movie } from '../../typings';
 import { FaPlay } from 'react-icons/fa';
 import styles from './banner.module.css';
 import { InformationCircleIcon } from '@heroicons/react/solid';
+import { useDispatch } from 'react-redux';
+import { selectCurrentMovie, showModal } from '../../redux/actionFunctions';
 
 type Props = {
   netflixOriginals: Movie[];
@@ -12,6 +14,7 @@ type Props = {
 
 const Banner = ({ netflixOriginals }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null);
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]);
@@ -32,7 +35,13 @@ const Banner = ({ netflixOriginals }: Props) => {
         <button className={`${styles.banner__button} bg-white text-black`}>
           <FaPlay className="h-3 w-3 text-black md:h-5 md:w-5" /> Play
         </button>
-        <button className={`${styles.banner__button} bg-[gray]/70`}>
+        <button
+          className={`${styles.banner__button} bg-[gray]/70`}
+          onClick={() => {
+            dispatch(showModal(true));
+            dispatch(selectCurrentMovie(movie));
+          }}
+        >
           <InformationCircleIcon className="h-4 w-4 md:h-6 md:w-6" /> More Info
         </button>
       </div>

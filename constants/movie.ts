@@ -1,2 +1,5 @@
 export const baseUrlBanner = 'https://image.tmdb.org/t/p/original/'
 export const baseUrlCardImage = 'https://image.tmdb.org/t/p/w500'
+export const baseUrlMovieVideo = 'https://api.themoviedb.org/3/'
+export const baseUrlYouTubeVideo = 'https://www.youtube.com/watch?v='
+export const defaultUrlYouTubeVideo = '0Z1fdCFF8VY'

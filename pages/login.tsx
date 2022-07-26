@@ -16,7 +16,7 @@ type FormValues = {
 
 const login = () => {
   const initialValues: FormValues = { email: '', password: '' };
-  const [login, setLogin] = useState(false);
+  const [loginButton, setLoginButton] = useState(false);
 
   //!!!
   const dispatch = useDispatch();
@@ -61,13 +61,14 @@ const login = () => {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
-          if (login) {
+          if (loginButton) {
             //!!!
-            dispatch(signIn(values.email, values.password));
-            router.push('/');
+            const res = dispatch(signIn(values.email, values.password));
+            if (res) router.push('/');
           } else {
             //!!!
-            dispatch(signUp(values.email, values.password));
+            const res = dispatch(signUp(values.email, values.password));
+            if (res) router.push('/');
           }
         }}
       >
@@ -88,7 +89,7 @@ const login = () => {
               type="submit"
               disabled={isSubmitting}
               className="w-full roundede bg-[#e50914] py-3 font-semibold"
-              onClick={() => setLogin(true)}
+              onClick={() => setLoginButton(true)}
             >
               Sign in
             </button>
@@ -98,7 +99,7 @@ const login = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className="text-white hover:underline ml-1"
-                onClick={() => setLogin(false)}
+                onClick={() => setLoginButton(false)}
               >
                 Sign up now
               </button>

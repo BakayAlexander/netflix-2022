@@ -9,16 +9,17 @@ import {
 import { auth } from '../firebase';
 
 
-export const signUp = ( email: string, password: string)=> async (dispatch: (arg0: { type: string; data?: any; }) => void) => {
-
+export const signUp = ( email: string, password: string)=> async (dispatch) => {
 dispatch(loadingActionCreator(true))
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     dispatch(registerActionCreator(userCredential.user))
+    return true
   } catch (e) {
     console.log(e);
     dispatch(loginErrorActionCreator(e))
     dispatch(logoutActionCreator())
+    return false
   } finally {
     dispatch(loadingActionCreator(false))
   }
@@ -29,10 +30,12 @@ export const signIn =  (email: string, password: string)=> async (dispatch) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     dispatch(loginActionCreator(userCredential.user))
+    return true
   } catch (e) {
     console.log(e);
     dispatch(loginErrorActionCreator(e))
     dispatch(logoutActionCreator())
+    return false
   } finally {
     dispatch(loadingActionCreator(false))
   }
@@ -52,7 +55,7 @@ export const logout =  () => async (dispatch) => {
 
 export const checkIsUserLoggedIn = () => async (dispatch) =>{
   dispatch(loadingActionCreator(true))
-  try{
+  try {
       onAuthStateChanged(auth, user => {
       if (user) {
         // Logged in...
@@ -64,5 +67,9 @@ export const checkIsUserLoggedIn = () => async (dispatch) =>{
         dispatch(loadingActionCreator(true))
       }
     })
-  }catch (e){console.log(e)}finally{dispatch(loadingActionCreator(false))}
+  }catch (e){
+    console.log(e)
+  }finally{
+    dispatch(loadingActionCreator(false))
+  }
 }

@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { useEffect } from 'react';
 import { auth } from '../firebase';
+import { isLoadingSelector } from '../redux/selectors';
+import { useSelector } from 'react-redux';
 
 export const getServerSideProps = async () => {
   const [
@@ -68,6 +70,10 @@ const Home = ({
   trendingNow,
 }: MoviesProps) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(isLoadingSelector);
+
+  if (isLoading) return null;
+
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);

@@ -4,4 +4,6 @@ export const actions = {
   LOGOUT: 'LOGOUT',
   REGISTER: 'REGISTER',
   LOADING: 'LOADING',
+  SHOW_MODAL: 'SHOW_MODAL',
+  CURRENT_MOVIE: 'CURRENT_MOVIE',
 };

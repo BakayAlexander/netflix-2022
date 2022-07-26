@@ -9,8 +9,9 @@ import { useDispatch } from 'react-redux';
 import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { useEffect } from 'react';
 import { auth } from '../firebase';
-import { isLoadingSelector } from '../redux/selectors';
+import { isLoadingSelector, showModalSelector } from '../redux/selectors';
 import { useSelector } from 'react-redux';
+import Modal from '../components/Modal/Modal';
 
 export const getServerSideProps = async () => {
   const [
@@ -71,6 +72,7 @@ const Home = ({
 }: MoviesProps) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(isLoadingSelector);
+  const isModalShown = useSelector(showModalSelector);
 
   if (isLoading) return null;
 
@@ -98,7 +100,7 @@ const Home = ({
           <MoviesRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* Modal */}
+      {isModalShown && <Modal />}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Movie } from '../typings';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { auth } from '../firebase';
-import { showModalSelector } from '../redux/selectors';
+import { showModalSelector, userSelector } from '../redux/selectors';
 import requests from '../utils/requests';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
@@ -13,6 +13,8 @@ import MoviesRow from '../components/MoviesRow';
 import Plans from '../components/Plans';
 import { getProducts, Product } from '@stripe/firestore-stripe-payments';
 import payments from '../lib/stripe';
+import useSubscription from '../hooks/useSubscription';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async () => {
   const [
@@ -79,7 +81,8 @@ const Home = ({
 }: MoviesProps) => {
   const dispatch = useDispatch<any>();
   const isModalShown = useSelector(showModalSelector);
-  const subscription = false;
+  const user = useSelector(userSelector);
+  const subscription = useSubscription(user);
 
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());

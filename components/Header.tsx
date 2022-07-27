@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { BellIcon, SearchIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     const handleScroll = () => {

@@ -33,14 +33,19 @@ const login = () => {
         <title>Login - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Image src={netflixLoginImg} layout="fill" className="-z-10 !hidden opacity-60 sm:!inline" objectFit="cover" />
+      <Image
+        src={netflixLoginImg}
+        layout="fill"
+        className="-z-10 !hidden opacity-60 sm:!inline"
+        objectFit="cover"
+      />
       <Link href="/">
         <img
           src="https://rb.gy/ulxxee"
           alt="Netflix logo"
           className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
-          width={150}
-          height={150}
+          width={100}
+          height={100}
         />
       </Link>
       <Formik
@@ -77,11 +82,19 @@ const login = () => {
               <label className="inline-block w-full">
                 <Field type="email" name="email" placeholder="Email" className="input" />
               </label>
-              <ErrorMessage name="email" component="div" className="p-1 text-[13px] font-light  text-orange-500" />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="p-1 text-[13px] font-light  text-orange-500"
+              />
               <label className="inline-block w-full">
                 <Field type="password" name="password" placeholder="Password" className="input" />
               </label>
-              <ErrorMessage name="password" component="div" className="p-1 text-[13px] font-light  text-orange-500" />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="p-1 text-[13px] font-light  text-orange-500"
+              />
             </div>
             <button
               type="submit"

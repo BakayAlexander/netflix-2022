@@ -28,6 +28,7 @@ const Plans = ({ products }: PlansProps) => {
   );
 
   const subscripeToPlan = () => {
+    console.log(user);
     if (!user) return;
     loadCheckout(selectedPlan?.prices[0].id!);
     setIsBillingLoading(true);
@@ -44,8 +45,8 @@ const Plans = ({ products }: PlansProps) => {
           <img
             src="https://rb.gy/ulxxee"
             alt="Netflix logo"
-            width={150}
-            height={90}
+            width={100}
+            height={100}
             className="cursor-pointer object-contain"
           />
         </Link>

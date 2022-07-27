@@ -22,7 +22,6 @@ const login = () => {
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);
-  // const {signIn, signUp} = useAuth()
 
   return (
     <div

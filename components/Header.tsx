@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BellIcon, SearchIcon } from '@heroicons/react/solid';
-import styles from './header.module.css';
 import Link from 'next/link';
 
 const Header = () => {
@@ -25,11 +24,11 @@ const Header = () => {
       <div className="flex items-center space-x-2 md:space-x-10">
         <img src="https://rb.gy/ulxxee" width={100} height={100} className="cursor-pointer object-contain" />
         <ul className="hidden space-x-4 md:flex">
-          <li className={styles.header__link}>Home</li>
-          <li className={styles.header__link}>TV shows</li>
-          <li className={styles.header__link}>Movies</li>
-          <li className={styles.header__link}>New & Polupar</li>
-          <li className={styles.header__link}>My list</li>
+          <li className="header__link">Home</li>
+          <li className="header__link">TV shows</li>
+          <li className="header__link">Movies</li>
+          <li className="header__link">New & Polupar</li>
+          <li className="header__link">My list</li>
         </ul>
       </div>
       <div className="flex items-center justify-center space-x-4 text-sm font-light">

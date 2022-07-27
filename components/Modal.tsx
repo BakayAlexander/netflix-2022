@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import MuiModal from '@mui/material/Modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { currentMovieSelector, showModalSelector } from '../../redux/selectors';
-import { showModal } from '../../redux/actionFunctions';
+import { currentMovieSelector, showModalSelector } from '../redux/selectors';
+import { showModal } from '../redux/actionFunctions';
 import { PlusIcon, ThumbUpIcon, VolumeOffIcon, VolumeUpIcon, XIcon } from '@heroicons/react/solid';
 import ReactPlayer from 'react-player';
-import { baseUrlMovieVideo, baseUrlYouTubeVideo, defaultUrlYouTubeVideo } from '../../constants/movie';
-import { Element, Genre } from '../../typings';
+import { Element, Genre } from '../typings';
 import { FaPlay } from 'react-icons/fa';
+import { baseUrlMovieVideo, baseUrlYouTubeVideo, defaultUrlYouTubeVideo } from '../utils/requests';
 
 const Modal = () => {
   const dispatch = useDispatch<any>();

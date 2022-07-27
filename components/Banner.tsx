@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { baseUrlBanner } from '../../constants/movie';
-import { Movie } from '../../typings';
+import { baseUrlBanner } from '../utils/requests';
+import { Movie } from '../typings';
 import { FaPlay } from 'react-icons/fa';
-import styles from './banner.module.css';
 import { InformationCircleIcon } from '@heroicons/react/solid';
 import { useDispatch } from 'react-redux';
-import { selectCurrentMovie, showModal } from '../../redux/actionFunctions';
+import { selectCurrentMovie, showModal } from '../redux/actionFunctions';
 
 type Props = {
   netflixOriginals: Movie[];
@@ -32,11 +31,11 @@ const Banner = ({ netflixOriginals }: Props) => {
         {movie?.overview}
       </p>
       <div className="flex space-x-3">
-        <button className={`${styles.banner__button} bg-white text-black`}>
+        <button className="banner__button bg-white text-black">
           <FaPlay className="h-3 w-3 text-black md:h-5 md:w-5" /> Play
         </button>
         <button
-          className={`${styles.banner__button} bg-[gray]/70`}
+          className="banner__button bg-[gray]/70"
           onClick={() => {
             dispatch(showModal(true));
             dispatch(selectCurrentMovie(movie));

@@ -1,17 +1,15 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import Banner from '../components/Banner/Banner';
-import Header from '../components/Header/Header';
-import requests from '../utils/requests';
-import { Movie } from '../typings';
-import MoviesRow from '../components/MoviesRow/MoviesRow';
-import { useDispatch } from 'react-redux';
-import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { useEffect } from 'react';
+import { Movie } from '../typings';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { auth } from '../firebase';
 import { showModalSelector } from '../redux/selectors';
-import { useSelector } from 'react-redux';
-import Modal from '../components/Modal/Modal';
+import requests from '../utils/requests';
+import Banner from '../components/Banner';
+import Header from '../components/Header';
+import Modal from '../components/Modal';
+import MoviesRow from '../components/MoviesRow';
 
 export const getServerSideProps = async () => {
   const [
@@ -78,7 +76,11 @@ const Home = ({
   }, [auth]);
 
   return (
-    <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+    <div
+      className={`relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ${
+        isModalShown && '!h-screen overflow-hidden'
+      }`}
+    >
       <Head>
         <title>Home - Netflix</title>
         <link rel="icon" href="/favicon.ico" />

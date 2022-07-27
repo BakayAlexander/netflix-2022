@@ -47,6 +47,7 @@ export const logout =  () => async (dispatch:any) => {
     dispatch(logoutActionCreator())
   } catch (e) {
     console.log(e);
+    dispatch(loginErrorActionCreator(e))
   } finally {
     dispatch(loadingActionCreator(false))
   }
@@ -68,6 +69,7 @@ export const checkIsUserLoggedIn = () => async (dispatch:any) =>{
     })
   }catch (e){
     console.log(e)
+    dispatch(loginErrorActionCreator(e))
   }finally{
     dispatch(loadingActionCreator(false))
   }

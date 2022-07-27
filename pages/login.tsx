@@ -7,6 +7,7 @@ import { checkIsUserLoggedIn, signIn, signUp } from '../redux/actionFunctions';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { auth } from '../firebase';
+import Link from 'next/link';
 
 type FormValues = {
   email: string;
@@ -22,7 +23,6 @@ const login = () => {
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);
-  // const {signIn, signUp} = useAuth()
 
   return (
     <div
@@ -33,13 +33,21 @@ const login = () => {
         <title>Login - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Image src={netflixLoginImg} layout="fill" className="-z-10 !hidden opacity-60 sm:!inline" objectFit="cover" />
-      <img
-        src="https://rb.gy/ulxxee"
-        className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
-        width={150}
-        height={150}
+      <Image
+        src={netflixLoginImg}
+        layout="fill"
+        className="-z-10 !hidden opacity-60 sm:!inline"
+        objectFit="cover"
       />
+      <Link href="/">
+        <img
+          src="https://rb.gy/ulxxee"
+          alt="Netflix logo"
+          className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
+          width={100}
+          height={100}
+        />
+      </Link>
       <Formik
         initialValues={initialValues}
         validate={values => {
@@ -74,11 +82,19 @@ const login = () => {
               <label className="inline-block w-full">
                 <Field type="email" name="email" placeholder="Email" className="input" />
               </label>
-              <ErrorMessage name="email" component="div" className="p-1 text-[13px] font-light  text-orange-500" />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="p-1 text-[13px] font-light  text-orange-500"
+              />
               <label className="inline-block w-full">
                 <Field type="password" name="password" placeholder="Password" className="input" />
               </label>
-              <ErrorMessage name="password" component="div" className="p-1 text-[13px] font-light  text-orange-500" />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="p-1 text-[13px] font-light  text-orange-500"
+              />
             </div>
             <button
               type="submit"

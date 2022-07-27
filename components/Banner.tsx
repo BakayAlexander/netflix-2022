@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { baseUrlBanner } from '../../constants/movie';
-import { Movie } from '../../typings';
+import { baseUrlBanner } from '../utils/requests';
+import { Movie } from '../typings';
 import { FaPlay } from 'react-icons/fa';
-import styles from './banner.module.css';
 import { InformationCircleIcon } from '@heroicons/react/solid';
 import { useDispatch } from 'react-redux';
-import { selectCurrentMovie, showModal } from '../../redux/actionFunctions';
+import { selectCurrentMovie, showModal } from '../redux/actionFunctions';
 
 type Props = {
   netflixOriginals: Movie[];
@@ -25,18 +24,18 @@ const Banner = ({ netflixOriginals }: Props) => {
       <div className="absolute top-0 left-0 h-[95vh] w-screen  -z-10">
         <Image src={`${baseUrlBanner}${movie?.backdrop_path || movie?.poster_path}`} layout="fill" objectFit="cover" />
       </div>
-      <h1 className="text-2xl lg:text-7xl md:text-4xl font-bold">
+      <h1 className="text-2xl lg:text-5xl md:text-4xl font-bold">
         {movie?.title || movie?.name || movie?.original_name}
       </h1>
-      <p className="max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl text-shadow-md">
+      <p className="max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-1xl text-shadow-md">
         {movie?.overview}
       </p>
       <div className="flex space-x-3">
-        <button className={`${styles.banner__button} bg-white text-black`}>
+        <button className="banner__button bg-white text-black">
           <FaPlay className="h-3 w-3 text-black md:h-5 md:w-5" /> Play
         </button>
         <button
-          className={`${styles.banner__button} bg-[gray]/70`}
+          className="banner__button bg-[gray]/70"
           onClick={() => {
             dispatch(showModal(true));
             dispatch(selectCurrentMovie(movie));

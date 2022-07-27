@@ -2,30 +2,31 @@ import { defaultStateTypes } from './../typings.d';
 import { combineReducers } from 'redux';
 import { actions } from './actions';
 
-
-
 let defaultState: defaultStateTypes = {
   isLoading: false,
   loginError: '',
-	isLoggedIn: false,
+  isLoggedIn: false,
   user: null,
   showModal: false,
-  currentMovie: null
+  currentMovie: null,
 };
 
-const reducer = (state = defaultState, action: { type: any; data: any; }) => {
-	switch (action.type) {
-		case actions.LOADING:{return{...state, isLoading: action.data}}
-    case actions.LOGIN: {return { ...state, isLoggedIn: true, user: action.data}
-  }
-		case actions.ERROR: {
-		return { ...state, loginError: action.data };
-		}
-    case actions.LOGOUT:{
+const reducer = (state = defaultState, action: { type: any; data: any }) => {
+  switch (action.type) {
+    case actions.LOADING: {
+      return { ...state, isLoading: action.data };
+    }
+    case actions.LOGIN: {
+      return { ...state, isLoggedIn: true, user: action.data };
+    }
+    case actions.ERROR: {
+      return { ...state, loginError: action.data };
+    }
+    case actions.LOGOUT: {
       return { ...state, isLoggedIn: false, user: null };
     }
-    case actions.REGISTER:{
-      return {...state, isLoggedIn: true, user: action.data}
+    case actions.REGISTER: {
+      return { ...state, isLoggedIn: true, user: action.data };
     }
     case actions.SHOW_MODAL: {
       return { ...state, showModal: action.data };
@@ -33,12 +34,10 @@ const reducer = (state = defaultState, action: { type: any; data: any; }) => {
     case actions.CURRENT_MOVIE: {
       return { ...state, currentMovie: action.data };
     }
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 };
-
-
 
 export const loginActionCreator = (data: any) => ({ type: actions.LOGIN, data });
 
@@ -55,5 +54,5 @@ export const showModalActionCreator = (data: any) => ({ type: actions.SHOW_MODAL
 export const currentMovieActionCreator = (data: any) => ({ type: actions.CURRENT_MOVIE, data });
 
 export const rootReducer = combineReducers({
-	reducer,
+  reducer,
 });

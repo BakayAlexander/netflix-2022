@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { baseUrlCardImage } from '../../constants/movie';
-import { selectCurrentMovie, showModal } from '../../redux/actionFunctions';
-import { Movie } from '../../typings';
+import { baseUrlCardImage } from '../utils/requests';
+import { selectCurrentMovie, showModal } from '../redux/actionFunctions';
+import { Movie } from '../typings';
 
 type Props = {
   movie: Movie;

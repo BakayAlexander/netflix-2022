@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import React, { useRef, useState } from 'react';
-import { Movie } from '../../typings';
-import MovieCard from '../MovieCard/MovieCard';
+import { Movie } from '../typings';
+import MovieCard from './MovieCard';
 
 type Props = {
   title: string;

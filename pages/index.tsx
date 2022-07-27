@@ -10,6 +10,9 @@ import Banner from '../components/Banner';
 import Header from '../components/Header';
 import Modal from '../components/Modal';
 import MoviesRow from '../components/MoviesRow';
+import Plans from '../components/Plans';
+import { getProducts, Product } from '@stripe/firestore-stripe-payments';
+import payments from '../lib/stripe';
 
 export const getServerSideProps = async () => {
   const [
@@ -32,6 +35,10 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchDocumentaries).then(res => res.json()),
   ]);
 
+  const products = await getProducts(payments, { includePrices: true, activeOnly: true })
+    .then(res => res)
+    .catch(err => console.log(err.message));
+
   return {
     props: {
       netflixOriginals: netflixOriginals.results,
@@ -42,6 +49,7 @@ export const getServerSideProps = async () => {
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
       documentaries: documentaries.results,
+      products,
     },
   };
 };
@@ -55,7 +63,7 @@ type MoviesProps = {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
-  // products: Product[]
+  products: Product[];
 };
 
 const Home = ({
@@ -67,13 +75,17 @@ const Home = ({
   romanceMovies,
   topRated,
   trendingNow,
+  products,
 }: MoviesProps) => {
   const dispatch = useDispatch<any>();
   const isModalShown = useSelector(showModalSelector);
+  const subscription = false;
 
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);
+
+  if (!subscription) return <Plans products={products} />;
 
   return (
     <div

@@ -7,6 +7,7 @@ import { checkIsUserLoggedIn, signIn, signUp } from '../redux/actionFunctions';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { auth } from '../firebase';
+import Link from 'next/link';
 
 type FormValues = {
   email: string;
@@ -33,12 +34,15 @@ const login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image src={netflixLoginImg} layout="fill" className="-z-10 !hidden opacity-60 sm:!inline" objectFit="cover" />
-      <img
-        src="https://rb.gy/ulxxee"
-        className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
-        width={150}
-        height={150}
-      />
+      <Link href="/">
+        <img
+          src="https://rb.gy/ulxxee"
+          alt="Netflix logo"
+          className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
+          width={150}
+          height={150}
+        />
+      </Link>
       <Formik
         initialValues={initialValues}
         validate={values => {

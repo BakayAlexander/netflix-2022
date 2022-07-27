@@ -45,9 +45,11 @@ export const logout =  () => async (dispatch:any) => {
   try {
     await signOut(auth);
     dispatch(logoutActionCreator())
+    return 'true'
   } catch (e) {
     console.log(e);
     dispatch(loginErrorActionCreator(e))
+    return false
   } finally {
     dispatch(loadingActionCreator(false))
   }

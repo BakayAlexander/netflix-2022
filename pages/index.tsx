@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { Movie } from '../typings';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkIsUserLoggedIn } from '../redux/actionFunctions';
-import { auth } from '../firebase';
 import { isLoadingSelector, showModalSelector, userSelector } from '../redux/selectors';
 import requests from '../utils/requests';
 import Banner from '../components/Banner';
@@ -16,6 +13,7 @@ import payments from '../lib/stripe';
 import useSubscription from '../hooks/useSubscription';
 import useList from '../hooks/useList';
 import { useRouter } from 'next/router';
+import { useCheckIsUserLoggedIn } from '../hooks/useCheckUserLogin';
 
 export const getServerSideProps = async () => {
   const [
@@ -87,12 +85,10 @@ const Home = ({
   const myListMovies = useList(user?.uid);
   const isLoading = useSelector(isLoadingSelector);
 
-  useEffect(() => {
-    dispatch(checkIsUserLoggedIn());
-  }, [auth]);
+  //Checking is user logged in
+  dispatch(useCheckIsUserLoggedIn());
 
-  // if (isLoading || subscription === null) return null;
-  if (!subscription) return <Plans products={products} />;
+  if (!isLoading && !subscription) return <Plans products={products} />;
 
   return (
     <div

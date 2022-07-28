@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikErrors } from 'formik';
 import netflixLoginImg from '../public/netflix-login.jpeg';
-import { checkIsUserLoggedIn, signIn, signUp } from '../redux/actionFunctions';
+import { signIn, signUp } from '../redux/actionFunctions';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { auth } from '../firebase';
 import Link from 'next/link';
+import { useCheckIsUserLoggedIn } from '../hooks/useCheckUserLogin';
 
 type FormValues = {
   email: string;
@@ -20,9 +20,7 @@ const login = () => {
   const dispatch = useDispatch<any>();
   const router = useRouter();
 
-  useEffect(() => {
-    dispatch(checkIsUserLoggedIn());
-  }, [auth]);
+  dispatch(useCheckIsUserLoggedIn());
 
   return (
     <div
@@ -67,10 +65,10 @@ const login = () => {
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
           if (loginButton) {
-            const res = dispatch(signIn(values.email, values.password));
+            const res = await dispatch(signIn(values.email, values.password));
             if (res) router.push('/');
           } else {
-            const res = dispatch(signUp(values.email, values.password));
+            const res = await dispatch(signUp(values.email, values.password));
             if (res) router.push('/');
           }
         }}

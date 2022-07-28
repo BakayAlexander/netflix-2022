@@ -94,9 +94,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .finally(() => setLoading(false));
   };
 
-  const memoedValue = useMemo(() => ({ user, signUp, signIn, error, loading, logout }), [user, loading, error]);
+  const memoedValue = useMemo(
+    () => ({ user, signUp, signIn, error, loading, logout }),
+    [user, loading, error]
+  );
 
-  return <AuthContext.Provider value={memoedValue}>{!initialLoading && children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={memoedValue}>{!initialLoading && children}</AuthContext.Provider>
+  );
 };
 
 // Let's only export the `useAuth` hook instead of the context.

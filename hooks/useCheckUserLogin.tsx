@@ -21,7 +21,7 @@ export const useCheckIsUserLoggedIn = () => (dispatch: any) => {
         } else {
           // Not logged in...
           dispatch(logoutActionCreator());
-          router.push('/login');
+          router.push('/welcome');
         }
       });
     } catch (e) {

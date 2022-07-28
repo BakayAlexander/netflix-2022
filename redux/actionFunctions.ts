@@ -10,6 +10,7 @@ import {
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 import { auth } from '../firebase';
+import { FirebaseError } from 'firebase/app';
 
 export const signUp = (email: string, password: string) => async (dispatch: any) => {
   dispatch(loadingActionCreator(true));
@@ -17,9 +18,9 @@ export const signUp = (email: string, password: string) => async (dispatch: any)
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     dispatch(registerActionCreator(userCredential.user));
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e);
-    dispatch(loginErrorActionCreator(e));
+    dispatch(loginErrorActionCreator(e.message));
     dispatch(logoutActionCreator());
     return false;
   } finally {
@@ -33,9 +34,9 @@ export const signIn = (email: string, password: string) => async (dispatch: any)
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     dispatch(loginActionCreator(userCredential.user));
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e);
-    dispatch(loginErrorActionCreator(e));
+    dispatch(loginErrorActionCreator(e.message));
     dispatch(logoutActionCreator());
     return false;
   } finally {

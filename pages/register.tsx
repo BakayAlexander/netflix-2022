@@ -16,14 +16,11 @@ type FormValues = {
   password: string;
 };
 
-const login = () => {
+const register = () => {
   const initialValues: FormValues = { email: '', password: '' };
-  const [loginButton, setLoginButton] = useState(false);
   const dispatch = useDispatch<any>();
   const router = useRouter();
   const loginError = useSelector(loginErrorSelector);
-
-  // dispatch(useCheckIsUserLoggedIn());
 
   return (
     <div
@@ -31,7 +28,7 @@ const login = () => {
      md:bg-transparent"
     >
       <Head>
-        <title>Login - Netflix</title>
+        <title>Register - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
@@ -67,18 +64,13 @@ const login = () => {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
-          if (loginButton) {
-            const res = await dispatch(signIn(values.email, values.password));
-            if (res) router.push('/');
-          } else {
-            const res = await dispatch(signUp(values.email, values.password));
-            if (res) router.push('/');
-          }
+          const res = await dispatch(signUp(values.email, values.password));
+          if (res) router.push('/');
         }}
       >
         {({ isSubmitting }) => (
           <Form className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14 md:min-w-[450px]">
-            <h1 className="text-4xl font-semibold">Sign in</h1>
+            <h1 className="text-4xl font-semibold">Register</h1>
             <div className="space-y-4">
               <label className="inline-block w-full">
                 <Field type="email" name="email" placeholder="Email" className="input" />
@@ -100,27 +92,20 @@ const login = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full roundede bg-[#e50914] py-3 font-semibold"
-              onClick={() => setLoginButton(true)}
+              className="w-full roundede bg-[#414141] py-3 font-semibold"
             >
-              Sign in
+              Register
             </button>
             {loginError && (
               <p className="p-1 text-[18px] font-light  text-orange-500 text-center">
                 {loginError}
               </p>
             )}
-
-            <div className="text-[gray]">
-              New to Netflix?
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="text-white hover:underline ml-1"
-                onClick={() => setLoginButton(false)}
-              >
-                Sign up now
-              </button>
+            <div className="text-[gray] flex flex-row">
+              Already a member?
+              <Link href="/login">
+                <p className="text-white hover:underline ml-1 cursor-pointer">Sign in</p>
+              </Link>
             </div>
           </Form>
         )}
@@ -129,4 +114,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default register;

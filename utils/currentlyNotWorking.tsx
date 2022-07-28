@@ -17,7 +17,7 @@ const currentlyNotWorking = () => {
     style: toast_red,
   });
 
-  return <Toaster position="bottom-center" />;
+  return;
 };
 
 export default currentlyNotWorking;

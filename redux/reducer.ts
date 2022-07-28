@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { actions } from './actions';
 
 let defaultState: defaultStateTypes = {
-  isLoading: false,
+  isLoading: true,
   loginError: '',
   isLoggedIn: false,
   user: null,

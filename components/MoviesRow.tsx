@@ -1,4 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { DocumentData } from 'firebase/firestore';
 import React, { useRef, useState } from 'react';
 import { Movie } from '../typings';
 import MovieCard from './MovieCard';
@@ -6,8 +7,7 @@ import MovieCard from './MovieCard';
 type Props = {
   title: string;
   // when using firebase
-  // movie: Movie | DocumentData[]
-  movies: Movie[];
+  movies: Movie[] | DocumentData[];
 };
 
 const MoviesRow = ({ title, movies }: Props) => {
@@ -18,7 +18,8 @@ const MoviesRow = ({ title, movies }: Props) => {
     setIsScrolled(true);
     if (rowRef.current) {
       const { scrollLeft, clientWidth } = rowRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;
+      const scrollTo =
+        direction === 'left' ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;
       rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
@@ -39,7 +40,7 @@ const MoviesRow = ({ title, movies }: Props) => {
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
           ref={rowRef}
         >
-          {movies.map(movie => (
+          {movies?.map(movie => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>

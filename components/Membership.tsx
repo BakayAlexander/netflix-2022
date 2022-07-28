@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import useSubscription from '../hooks/useSubscription';
 import { goToBillingPortal } from '../lib/stripe';
 import { userSelector } from '../redux/selectors';
+import currentlyNotWorking from '../utils/currentlyNotWorking';
 import Loader from './Loader';
 
 const Membership = () => {
@@ -38,8 +40,12 @@ const Membership = () => {
             <p className="text-[gray]">Password: ********</p>
           </div>
           <div className="md:text-right">
-            <p className="membership_link">Change email</p>
-            <p className="membership_link">Change password</p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Change email
+            </p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Change password
+            </p>
           </div>
         </div>
 
@@ -53,13 +59,22 @@ const Membership = () => {
             </p>
           </div>
           <div className="md:text-right">
-            <p className="membership_link">Manage payment info</p>
-            <p className="membership_link">Add backup payment method</p>
-            <p className="membership_link">Billing Details</p>
-            <p className="membership_link">Change billing day</p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Manage payment info
+            </p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Add backup payment method
+            </p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Billing Details
+            </p>
+            <p className="membership_link" onClick={currentlyNotWorking}>
+              Change billing day
+            </p>
           </div>
         </div>
       </div>
+      <Toaster position="bottom-center" />
     </div>
   );
 };

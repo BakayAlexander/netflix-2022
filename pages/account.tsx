@@ -3,16 +3,15 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Membership from '../components/Membership';
-import { auth } from '../firebase';
 import useSubscription from '../hooks/useSubscription';
 import payments from '../lib/stripe';
-import { checkIsUserLoggedIn, logout } from '../redux/actionFunctions';
+import { logout } from '../redux/actionFunctions';
 import { userSelector } from '../redux/selectors';
 import { goToBillingPortal } from '../lib/stripe';
+import { useCheckIsUserLoggedIn } from '../hooks/useCheckUserLogin';
 
 type AccountProps = {
   products: Product[];
@@ -25,9 +24,7 @@ const account = ({ products }: AccountProps) => {
   const router = useRouter();
   const date = new Date(subscription?.created!).toLocaleString();
 
-  useEffect(() => {
-    dispatch(checkIsUserLoggedIn());
-  }, [auth]);
+  dispatch(useCheckIsUserLoggedIn());
 
   return (
     <div>

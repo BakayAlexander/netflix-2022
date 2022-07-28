@@ -7,12 +7,7 @@ import {
   showModalActionCreator,
   currentMovieActionCreator,
 } from './reducer';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 import { auth } from '../firebase';
 
@@ -58,26 +53,6 @@ export const logout = () => async (dispatch: any) => {
     console.log(e);
     dispatch(loginErrorActionCreator(e));
     return false;
-  } finally {
-    dispatch(loadingActionCreator(false));
-  }
-};
-
-export const checkIsUserLoggedIn = () => async (dispatch: any) => {
-  dispatch(loadingActionCreator(true));
-  try {
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        // Logged in...
-        dispatch(loginActionCreator(user));
-      } else {
-        // Not logged in...
-        dispatch(logoutActionCreator());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    dispatch(loginErrorActionCreator(e));
   } finally {
     dispatch(loadingActionCreator(false));
   }

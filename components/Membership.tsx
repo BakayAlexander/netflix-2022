@@ -9,6 +9,7 @@ const Membership = () => {
   const user = useSelector(userSelector);
   const subscription = useSubscription(user);
   const [isBillingLoading, setBillingLoading] = useState(false);
+  const nextBillingDate = new Date(subscription?.current_period_end!).toLocaleString();
 
   const manageSubscription = () => {
     if (subscription) {
@@ -37,8 +38,8 @@ const Membership = () => {
             <p className="text-[gray]">Password: ********</p>
           </div>
           <div className="md:text-right">
-            <p className="membershipLink">Change email</p>
-            <p className="membershipLink">Change password</p>
+            <p className="membership_link">Change email</p>
+            <p className="membership_link">Change password</p>
           </div>
         </div>
 
@@ -48,14 +49,14 @@ const Membership = () => {
               {subscription?.cancel_at_period_end
                 ? 'Your membership will end on '
                 : 'Your next billing date is '}
-              {subscription?.current_period_end}
+              {nextBillingDate}
             </p>
           </div>
           <div className="md:text-right">
-            <p className="membershipLink">Manage payment info</p>
-            <p className="membershipLink">Add backup payment method</p>
-            <p className="membershipLink">Billing Details</p>
-            <p className="membershipLink">Change billing day</p>
+            <p className="membership_link">Manage payment info</p>
+            <p className="membership_link">Add backup payment method</p>
+            <p className="membership_link">Billing Details</p>
+            <p className="membership_link">Change billing day</p>
           </div>
         </div>
       </div>

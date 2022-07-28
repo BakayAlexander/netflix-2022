@@ -8,7 +8,7 @@ import { showModalSelector, userSelector } from '../redux/selectors';
 import requests from '../utils/requests';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
-import Modal from '../components/Modal';
+import MovieModal from '../components/MovieModal';
 import MoviesRow from '../components/MoviesRow';
 import Plans from '../components/Plans';
 import { getProducts, Product } from '@stripe/firestore-stripe-payments';
@@ -114,7 +114,7 @@ const Home = ({
           <MoviesRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {isModalShown && <Modal />}
+      {isModalShown && <MovieModal />}
     </div>
   );
 };

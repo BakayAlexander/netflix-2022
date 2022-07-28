@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BellIcon, SearchIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,6 +34,7 @@ const Header = () => {
             className="cursor-pointer object-contain"
           />
         </Link>
+        <MobileMenu />
         <ul className="hidden space-x-4 md:flex">
           <li className="header__link">Home</li>
           <li className="header__link">TV shows</li>

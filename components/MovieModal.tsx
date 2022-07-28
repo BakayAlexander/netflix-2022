@@ -9,7 +9,7 @@ import { Element, Genre } from '../typings';
 import { FaPlay } from 'react-icons/fa';
 import { baseUrlMovieVideo, baseUrlYouTubeVideo, defaultUrlYouTubeVideo } from '../utils/requests';
 
-const Modal = () => {
+const MovieModal = () => {
   const dispatch = useDispatch<any>();
   const isModalShown = useSelector(showModalSelector);
   const currentMovie = useSelector(currentMovieSelector);
@@ -21,12 +21,14 @@ const Modal = () => {
     if (!currentMovie) return;
     async function fetchMovie() {
       const data = await fetch(
-        `${baseUrlMovieVideo}${currentMovie?.media_type === 'tv' ? 'tv' : 'movie'}/${currentMovie?.id}?api_key=${
-          process.env.NEXT_PUBLIC_API_KEY
-        }&language=en-US&append_to_response=videos`
+        `${baseUrlMovieVideo}${currentMovie?.media_type === 'tv' ? 'tv' : 'movie'}/${
+          currentMovie?.id
+        }?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&append_to_response=videos`
       ).then(response => response.json());
       if (data?.videos) {
-        const index = data.videos.results.findIndex((element: Element) => element.type === 'Trailer');
+        const index = data.videos.results.findIndex(
+          (element: Element) => element.type === 'Trailer'
+        );
         setTrailer(data.videos?.results[index]?.key);
       }
       if (data?.genres) {
@@ -95,8 +97,12 @@ const Modal = () => {
           <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
             <div className="space-y-6 text-lg">
               <div className="flex ite space-x-2 text-sm items-center">
-                <p className="font-semibold text-green-400">{Math.floor(currentMovie.vote_average * 10)}% Match</p>
-                <p className="font-light">{currentMovie.release_date || currentMovie.first_air_date}</p>
+                <p className="font-semibold text-green-400">
+                  {Math.floor(currentMovie.vote_average * 10)}% Match
+                </p>
+                <p className="font-light">
+                  {currentMovie.release_date || currentMovie.first_air_date}
+                </p>
                 <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-sm">
                   HD
                 </div>
@@ -126,4 +132,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default MovieModal;

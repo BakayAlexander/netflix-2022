@@ -70,11 +70,9 @@ export const checkIsUserLoggedIn = () => async (dispatch: any) => {
       if (user) {
         // Logged in...
         dispatch(loginActionCreator(user));
-        dispatch(loadingActionCreator(false));
       } else {
         // Not logged in...
         dispatch(logoutActionCreator());
-        dispatch(loadingActionCreator(true));
       }
     });
   } catch (e) {

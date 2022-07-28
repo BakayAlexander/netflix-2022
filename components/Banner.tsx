@@ -22,7 +22,11 @@ const Banner = ({ netflixOriginals }: Props) => {
   return (
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12 ">
       <div className="absolute top-0 left-0 h-[95vh] w-screen  -z-10">
-        <Image src={`${baseUrlBanner}${movie?.backdrop_path || movie?.poster_path}`} layout="fill" objectFit="cover" />
+        <Image
+          src={`${baseUrlBanner}${movie?.backdrop_path || movie?.poster_path}`}
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
       <h1 className="text-2xl lg:text-5xl md:text-4xl font-bold">
         {movie?.title || movie?.name || movie?.original_name}
@@ -31,7 +35,13 @@ const Banner = ({ netflixOriginals }: Props) => {
         {movie?.overview}
       </p>
       <div className="flex space-x-3">
-        <button className="banner__button bg-white text-black">
+        <button
+          className="banner__button bg-white text-black"
+          onClick={() => {
+            dispatch(showModal(true));
+            dispatch(selectCurrentMovie(movie));
+          }}
+        >
           <FaPlay className="h-3 w-3 text-black md:h-5 md:w-5" /> Play
         </button>
         <button

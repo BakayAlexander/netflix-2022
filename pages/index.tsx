@@ -4,16 +4,17 @@ import { Movie } from '../typings';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkIsUserLoggedIn } from '../redux/actionFunctions';
 import { auth } from '../firebase';
-import { showModalSelector, userSelector } from '../redux/selectors';
+import { isLoadingSelector, showModalSelector, userSelector } from '../redux/selectors';
 import requests from '../utils/requests';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
-import Modal from '../components/Modal';
+import MovieModal from '../components/MovieModal';
 import MoviesRow from '../components/MoviesRow';
 import Plans from '../components/Plans';
 import { getProducts, Product } from '@stripe/firestore-stripe-payments';
 import payments from '../lib/stripe';
 import useSubscription from '../hooks/useSubscription';
+import useList from '../hooks/useList';
 import { useRouter } from 'next/router';
 
 export const getServerSideProps = async () => {
@@ -83,11 +84,14 @@ const Home = ({
   const isModalShown = useSelector(showModalSelector);
   const user = useSelector(userSelector);
   const subscription = useSubscription(user);
+  const myListMovies = useList(user?.uid);
+  const isLoading = useSelector(isLoadingSelector);
 
   useEffect(() => {
     dispatch(checkIsUserLoggedIn());
   }, [auth]);
 
+  // if (isLoading || subscription === null) return null;
   if (!subscription) return <Plans products={products} />;
 
   return (
@@ -105,16 +109,16 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals} />
         <section className="md: space-y-24">
           <MoviesRow title="Trending Now" movies={trendingNow} />
+          {myListMovies.length > 0 && <MoviesRow title="My List" movies={myListMovies} />}
           <MoviesRow title="Top Rated" movies={topRated} />
           <MoviesRow title="Action Thrillers" movies={actionMovies} />
           <MoviesRow title="Comedies" movies={comedyMovies} />
-          {/* my list */}
           <MoviesRow title="Scary Movies" movies={horrorMovies} />
           <MoviesRow title="Romance Movies" movies={romanceMovies} />
           <MoviesRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {isModalShown && <Modal />}
+      {isModalShown && <MovieModal />}
     </div>
   );
 };

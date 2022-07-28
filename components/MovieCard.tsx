@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 import { baseUrlCardImage } from '../utils/requests';
 import { selectCurrentMovie, showModal } from '../redux/actionFunctions';
 import { Movie } from '../typings';
+import { DocumentData } from 'firebase/firestore';
 
 type Props = {
-  movie: Movie;
   // when using firebase
-  // movie: Movie | DocumentData[]
+  movie: Movie | DocumentData;
 };
 
 const MovieCard = ({ movie }: Props) => {

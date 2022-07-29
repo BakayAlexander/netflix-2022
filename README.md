@@ -55,4 +55,11 @@ The page will reload when you make changes.
 
 ### :exclamation: If you are using Google Chrome you may have «Your connection is not private» error. You can skip this by clicking "Advanced" -> "Visit this website". That’s all because I’m using a free Netlify domain to deploy my app, sorry for that :crying_cat_face:
 
-## [Netflix Clone by Alexander Bakay](https://bakay-netflix.netlify.app/)
+
+## [Netflix Clone App](https://bakay-netflix.netlify.app/)
+
+
+https://user-images.githubusercontent.com/88661163/181732505-0a3b402d-4873-44c1-baff-351083f1d119.mp4
+
+
+

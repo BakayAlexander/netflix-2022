@@ -1,11 +1,9 @@
-README PROJECTS
-
 # :clapper: Netflix Clone 2022
 
 This project was building with
 [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
 
-## :rocket: `Technical stack`:
+### :rocket: `Technical stack`:
 
 - :barber: Next.js
 - :fire: Tailwind
@@ -55,6 +53,6 @@ The page will reload when you make changes.
 
 # :desktop_computer: Public domain
 
-## :exclamation: If you are using Google Chrome you may have «Your connection is not private». You can skip this by clicking Advanced -> Visit this website. That’s all because of I’m using free Netlify domain to deploy my app, sory for that :crying_cat_face:
+### :exclamation: If you are using Google Chrome you may have «Your connection is not private» error. You can skip this by clicking "Advanced" -> "Visit this website". That’s all because I’m using a free Netlify domain to deploy my app, sorry for that :crying_cat_face:
 
-## [Netflix](https://bakay-netflix.netlify.app/)
+## [Netflix Clone by Alexander Bakay](https://bakay-netflix.netlify.app/)

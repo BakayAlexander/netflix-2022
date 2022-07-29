@@ -53,7 +53,7 @@ The page will reload when you make changes.
 
 # :desktop_computer: Public domain
 
-### :exclamation: If you are using Google Chrome you may have «Your connection is not private» error. You can skip this by clicking "Advanced" -> "Visit this website". That’s all because I’m using a free Netlify domain to deploy my app, sorry for that :crying_cat_face:
+#### :exclamation: If you are using Google Chrome you may have «Your connection is not private» error. You can skip this by clicking "Advanced" -> "Visit this website". That’s all because I’m using a free Netlify domain to deploy my app, sorry for that :crying_cat_face:
 
 
 ## [Netflix Clone App](https://bakay-netflix.netlify.app/)

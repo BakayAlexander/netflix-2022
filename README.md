@@ -1,23 +1,60 @@
-# Next.js + Tailwind CSS Example
+README PROJECTS
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+# :clapper: Netflix Clone 2022
 
-## Deploy your own
+This project was building with
+[Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## :rocket: `Technical stack`:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- :barber: Next.js
+- :fire: Tailwind
+- :watch: TypeScript
+- :rocket: Firebase
+- :euro: Stripe
+- :receipt: Formik
+- :sunglasses: MUI
+- :movie_camera: React-Player
+- :sandwich: React Hot Toast
+- :shoe: CodeStyle - Prettier
 
-## How to use
+### :scroll: Description:
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+This is a Netflix clone web app. Fully adaptive. You can register or sign in then choose and pay for
+your subscription (with in test credit card). Also, you can look at trailer movies and ad those
+movies to your personal list. If you are logged in and subscribed you can cancel your subscription
+or change your plan.
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+### :astronaut: User guide:
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. Register (use any email and password) or login (email: test@mail.com password: testtest)
+2. If you are registered for the first time you will be able to choose your subscription plan.
+3. To pay for your subscription please use a test credit card:
+
+- Visa
+- 4242 4242 4242 4242
+- CVC: any 3 digits
+- Date: any future date
+- Name and surname: any
+- Address: any
+- you can also use another test card from [Stripe docs](https://stripe.com/docs/testing).
+
+4. After you choose your subscription you can enjoy this app, choosing movies and watching trailers.
+   You can also add movies to «My List».
+5. You can manage your subscription options by clicking the top right button. While you are on
+   '/account' page you can also change your subscription plan or cancel the subscription.
+
+### :shinto_shrine: `npm run dev`
+
+- Download this project or `git clone`
+- Run command `npm i`
+- Run `npm run dev`
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.
+
+# :desktop_computer: Public domain
+
+## :exclamation: If you are using Google Chrome you may have «Your connection is not private». You can skip this by clicking Advanced -> Visit this website. That’s all because of I’m using free Netlify domain to deploy my app, sory for that :crying_cat_face:
+
+## [Netflix](https://bakay-netflix.netlify.app/)

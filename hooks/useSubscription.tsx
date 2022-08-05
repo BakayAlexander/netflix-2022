@@ -23,15 +23,10 @@ const useSubscription = (user: User | null) => {
     } catch (err) {
       console.log(err);
     } finally {
-      dispatch(loadingActionCreator(false));
+      //Bad method need to be changed
+      setTimeout(() => dispatch(loadingActionCreator(false)), 1000);
     }
   }, [user]);
-  //Bad method need to be changed
-  // if (subscription) {
-  //   dispatch(loadingActionCreator(false));
-  // } else {
-  //   setTimeout(() => dispatch(loadingActionCreator(false)), 1000);
-  // }
   return subscription;
 };
 

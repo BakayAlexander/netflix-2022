@@ -7,6 +7,7 @@ This project was building with
 
 - :barber: Next.js
 - :fire: Tailwind
+- :package: Redux
 - :watch: TypeScript
 - :rocket: Firebase
 - :euro: Stripe

@@ -56,6 +56,9 @@ The page will reload when you make changes.
 
 #### :exclamation: If you are using Google Chrome you may have «Your connection is not private» error. You can skip this by clicking "Advanced" -> "Visit this website". That’s all because I’m using a free Netlify domain to deploy my app, sorry for that :crying_cat_face:
 
+#### :exclamation: upd: 22/08/15
+Suddenly Firebase declined my payment for the subscription. So Stripe functional will be unavailable until I can't get an EU bank card(
+
 
 ## [Netflix Clone App](https://bakay-netflix.netlify.app/)
 

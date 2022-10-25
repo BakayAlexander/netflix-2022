@@ -17,7 +17,7 @@ const Table = ({ products, selectedPlan }: TableProps) => {
             <td
               key={product.id}
               className={`table__item ${
-                selectedPlan?.id === product.id ? 'text-[#E50914]' : 'text-[gray]'
+                selectedPlan?.id === product.id ? 'text-[#e5e5e5]' : 'text-[gray]'
               }`}
             >
               {product.prices[0].unit_amount! / 100} USD
